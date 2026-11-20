@@ -1,40 +1,40 @@
 # Push — Backend API
 
-API REST construida con **NestJS**, **Prisma** y **JWT** para gestionar rutinas semanales de entrenamiento, títulos personalizados por día y ejercicios.
+REST API built with **NestJS**, **Prisma**, and **JWT** to manage weekly workout routines, custom daily titles, and exercises.
 
-## ✨ Funcionalidades
+## ✨ Features
 
-- **Autenticación segura:** registro e inicio de sesión de usuarios con contraseñas encriptadas (`bcrypt`) y tokens JWT.
-- **Rutinas por día:** obtención y actualización del título de cada día de la semana (`monday` – `sunday`) mediante patrón `upsert`.
-- **CRUD de ejercicios:** creación, edición y eliminación de ejercicios con series, repeticiones y peso (`kg`).
+- **Authentication:** user registration and login with hashed passwords (`bcrypt`) and JWT tokens.
+- **Daily routines:** fetch and update the title for each day of the week (`monday` – `sunday`) using an `upsert` pattern.
+- **Exercise CRUD:** create, update, and delete exercises with sets, reps, and weight (`kg`).
 
-## 🛠️ Stack tecnológico
+## 🛠️ Tech Stack
 
 - **Framework:** NestJS
-- **ORM / Base de datos:** Prisma + PostgreSQL
-- **Autenticación:** Passport + JWT
-- **Lenguaje:** TypeScript
+- **ORM / Database:** Prisma + PostgreSQL
+- **Authentication:** Passport / JWT
+- **Language:** TypeScript
 
-## 🚀 Instalación y ejecución en local
+## 🚀 Local Setup
 
-1. **Clona el repositorio e instala las dependencias:**
+1. **Clone the repository and install dependencies:**
    ```bash
-   git clone <url-de-tu-repo-backend>
-   cd <nombre-carpeta-backend>
+   git clone <your-backend-repo-url>
+   cd <your-backend-folder-name>
    npm install
    ```
 
-2. **Configura las variables de entorno:**
-   Crea un archivo `.env` en la raíz del proyecto (puedes guiarte por `.env.example`):
+2. **Configure environment variables:**
+   Create a `.env` file in the root directory (you can use `.env.example` as a reference):
 
-3. **Ejecuta las migraciones de Prisma:**
+3. **Run Prisma migrations:**
    ```bash
    npx prisma migrate dev
    ```
 
-4. **Arranca el servidor en modo desarrollo:**
+4. **Start the development server:**
    ```bash
    npm run start:dev
    ```
 
-La API quedará escuchando en `http://localhost:3001`.
+The API will be available at `http://localhost:3001`.
