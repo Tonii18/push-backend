@@ -5,16 +5,17 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  // Habilitar validaciones globales automáticas con class-validator
   app.useGlobalPipes(new ValidationPipe());
 
-  // Habilitar CORS para Next.js
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: [
+      'http://localhost:3000',
+      process.env.FRONTEND_URL,
+    ].filter((origin): origin is string => Boolean(origin)),
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   });
 
-  await app.listen(3001);
+  await app.listen(process.env.PORT || 3001);
 }
 bootstrap();
