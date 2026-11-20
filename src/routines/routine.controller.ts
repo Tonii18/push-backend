@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, HttpCode, HttpStatus, UseGuards, Req, Para
 import { ExerciseDto } from './dto/exercise.dto';
 import { RoutineService } from './routine.service';
 import { JwtGuard } from '../auth/jwt.guard';
+import { UpdateRoutineTitleDto } from './dto/updateRoutineTitle.dto';
 
 @UseGuards(JwtGuard)
 @Controller('routines')
@@ -35,5 +36,12 @@ export class RoutineController {
         const userId = req.user?.id ?? req.user?.sub ?? req.user?.userId;
 
         return this.routineService.deleteExercise(userId, exerciseId)
+    }
+
+    @Patch(':day')
+    async updateTitle(@Req() req: any, @Param('day') day: string, @Body() routineTitleDto: UpdateRoutineTitleDto) {
+        const userId = req.user?.id ?? req.user?.sub ?? req.user?.userId;
+
+        return this.routineService.updateTitle(userId, day, routineTitleDto.title);
     }
 }

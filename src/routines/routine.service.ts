@@ -97,4 +97,25 @@ export class RoutineService {
             where: {id: exerciseId},
         });
     }
+
+    async updateTitle(userId: string, day: string, title: string) {
+        const normalizedDay = day.toLowerCase();
+
+        return this.prisma.routine.upsert({
+            where: {
+                userId_dayOfWeek: {
+                    userId,
+                    dayOfWeek: normalizedDay,
+                },
+            },
+            update: {
+                title: title.trim(),
+            },
+            create: {
+                userId,
+                dayOfWeek: normalizedDay,
+                title: title.trim(),
+            }
+        });
+    }
 }
